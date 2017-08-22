@@ -21,7 +21,7 @@ module Rack
 
     def call(env)
       # Contact the buckler client using the port it is listening on for http requests
-      url = URI.parse("http://localhost:#{@port.to_s}/buckler")
+      url = URI.parse("http://localhost:#{@opts[:port].to_s}/buckler")
       req = Net::HTTP::Get.new(url.to_s)
 
       headers = Hash[*env.select {|k,v| k.start_with? 'HTTP_'}
@@ -43,7 +43,7 @@ module Rack
       res = nil
       begin
         # Make sure you set a timeout to protect your application latency (this is more of a safety measure).
-        res = Net::HTTP.start(url.host, url.port, read_timeout: 0.1, open_timeout: 0.1) {|http|
+        res = Net::HTTP.start(url.host, url.port, read_timeout: @opts[:read_timeout], open_timeout: @opts[:open_timeout]) {|http|
           http.request(req)
         }
       rescue

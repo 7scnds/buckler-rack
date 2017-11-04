@@ -4,13 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rack/buckler/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rack-buckler"
+  spec.name          = "buckler-rack"
   spec.version       = Rack::Buckler::VERSION
   spec.authors       = ["Sega Okhiria"]
-  spec.email         = ["sega.okhiria@7scnds.com"]
-  spec.description   = %q{Middleware that will make Rack-based apps communicate with buckler client. Read more here: '{location to buckler and rack here}'.}
+  spec.email         = ["sega@7scnds.com"]
+  spec.description   = %q{Middleware that will enable Rack-based apps communicate with buckler client. Read more here:
+  '{https://buckler.7scnds.com/getting-started/rails-integration}'.}
   spec.summary       = %q{Middleware for communicating buckler client in Rack apps}
-  spec.homepage      = "https://bitbucket.org/segaokhiria/rack-buckler"
+  spec.homepage      = "https://github.com/7scnds/buckler-rack"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/).reject { |f| f == '.gitignore' or f =~ /^examples/ }
@@ -21,9 +22,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
-=begin
-  spec.add_development_dependency "minitest", ">= 5.3.0"
-  spec.add_development_dependency "mocha", ">= 0.14.0"
-  spec.add_development_dependency "rack-test", ">= 0"
-=end
 end
